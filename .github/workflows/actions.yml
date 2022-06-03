@@ -8,10 +8,10 @@ env :
   AUTH_URL : "https://z-cwp-int.us.auth0.com"
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - uses : ZscalerCWP/Zscaler-IaC-Action@v0.3.1
+      - uses : ZscalerCWP/Zscaler-IaC-Action@main
         id : iac-scan
         with:
           client_id : ${{ secrets.ZSCANNER_CLIENT_ID }}
