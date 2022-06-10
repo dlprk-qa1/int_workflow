@@ -37,10 +37,13 @@ jobs:
 
      - name: Terraform Plan
        id: plan
-       run: terraform plan -no-color -var="grafana_idp_metadata_url=${{ secrets.GRAFANA_IDP_METADATA_URL }}" -var="opensearch_idp_metadata_content=${{ secrets.OPENSEARCH_IDP_METADATA_CONTENT }}" -var="opensearch_idp_entity_id=${{ secrets.OPENSEARCH_IDP_ENTITY_ID }}" -var="opensearch_idp_metadata_location=${{ secrets.OPENSEARCH_IDP_METADATA_LOCATION }}"
+       run: terraform plan -out tfplanout.binary
        continue-on-error: true
    
-     
+     - name: Terraform Show
+       id: show
+       run: terraform show -json './tfplanout.binary' > tfplan.json
+       continue-on-error: true
      - name: Iac-scan  
        uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
