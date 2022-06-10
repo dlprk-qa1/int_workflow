@@ -17,7 +17,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
-
+     - name: checkout   
+       uses: actions/checkout@v2
+       
      - name: Setup Terraform
        uses: hashicorp/setup-terraform@v1
 
@@ -37,9 +39,8 @@ jobs:
        id: plan
        run: terraform plan -no-color -var="grafana_idp_metadata_url=${{ secrets.GRAFANA_IDP_METADATA_URL }}" -var="opensearch_idp_metadata_content=${{ secrets.OPENSEARCH_IDP_METADATA_CONTENT }}" -var="opensearch_idp_entity_id=${{ secrets.OPENSEARCH_IDP_ENTITY_ID }}" -var="opensearch_idp_metadata_location=${{ secrets.OPENSEARCH_IDP_METADATA_LOCATION }}"
        continue-on-error: true
-       
-     - name: checkout   
-       uses: actions/checkout@v2
+   
+     
      - name: Iac-scan  
        uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
