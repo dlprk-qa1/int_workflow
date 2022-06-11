@@ -45,9 +45,9 @@ jobs:
        run: pwd
        continue-on-error: true
        
-     - name: ls
-       id: ls
-       run: ls
+     - name: cat
+       id: cat
+       run: cat tfplan.json
        continue-on-error: true
        
      - name: Iac-scan  
