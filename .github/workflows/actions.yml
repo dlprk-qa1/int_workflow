@@ -40,6 +40,16 @@ jobs:
        id: show
        run: terraform show -json 'tfplanout.binary' > tfplan.json
        continue-on-error: true
+     - name: pwd
+       id: pwd
+       run: pwd
+       continue-on-error: true
+       
+     - name: ls
+       id: ls
+       run: ls
+       continue-on-error: true
+       
      - name: Iac-scan  
        uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
