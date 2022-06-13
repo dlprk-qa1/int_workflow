@@ -44,7 +44,10 @@ jobs:
        id: pwd
        run: pwd
        continue-on-error: true
-       
+     - name: ls
+       id: ls
+       run: ls
+       continue-on-error: true  
      - name: cat
        id: cat
        run: cat tfplan.json
