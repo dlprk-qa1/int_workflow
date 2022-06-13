@@ -54,7 +54,7 @@ jobs:
        continue-on-error: true
        
      - name: Iac-scan  
-       uses : ZscalerCWP/Zscaler-IaC-Action@main
+       uses : ZscalerCWP/Zscaler-IaC-Action@V02d36a5
        id : iac-scan
        with:
           client_id : ${{ secrets.ZSCANNER_CLIENT_GH_ID }}
