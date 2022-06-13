@@ -1,4 +1,4 @@
-name: Test
+name: Scale_Test
 on:
   pull_request:
     types: [opened]
@@ -57,8 +57,8 @@ jobs:
        uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
        with:
-          client_id : ${{ secrets.ZSCANNER_CLIENT_ID }}
-          client_secret : ${{ secrets.ZSCANNER_CLIENT_SECRET }}
+          client_id : ${{ secrets.ZSCANNER_CLIENT_GH_ID }}
+          client_secret : ${{ secrets.ZSCANNER_CLIENT_GH_SECRET }}
           fail_build : 'true'
           output_format : 'human+github-sarif'
           region : 'CUSTOM'
