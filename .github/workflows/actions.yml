@@ -14,8 +14,8 @@ jobs:
      - name: Configure AWS credentials from Test account
        uses: aws-actions/configure-aws-credentials@v1
        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_GH_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_GH_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
      - name: checkout   
        uses: actions/checkout@v2
@@ -57,8 +57,8 @@ jobs:
        uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
        with:
-          client_id : ${{ secrets.ZSCANNER_CLIENT_ID }}
-          client_secret : ${{ secrets.ZSCANNER_CLIENT_SECRET }}
+          client_id : ${{ secrets.ZSCANNER_CLIENT_GH_ID }}
+          client_secret : ${{ secrets.ZSCANNER_CLIENT_GH_SECRET }}
           fail_build : 'true'
           output_format : 'human+github-sarif'
           region : 'CUSTOM'
