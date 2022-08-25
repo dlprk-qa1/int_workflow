@@ -11,50 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-     - name: Configure AWS credentials from Test account
-       uses: aws-actions/configure-aws-credentials@v1
-       with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
+   
      - name: checkout   
        uses: actions/checkout@v2
        
-     - name: Setup Terraform
-       uses: hashicorp/setup-terraform@v1
-
-     - name: Terraform Init
-       id: init
-       run: terraform init
-      
-     - name: Terraform Validate
-       id: validate
-       run: terraform validate -no-color
-
-     - name: Terraform Plan
-       id: plan
-       run: terraform plan -out tfplanout.binary -var="aws_access_key=aws-access-key-id" -var="aws_secret_key=aws-secret-access-key"
-       continue-on-error: true
-   
-     - name: Terraform Show
-       id: show
-       run: terraform show -json 'tfplanout.binary' > tfplan.json
-       continue-on-error: true
-     - name: pwd
-       id: pwd
-       run: pwd
-       continue-on-error: true
-     - name: ls
-       id: ls
-       run: ls
-       continue-on-error: true  
-     - name: cat
-       id: cat
-       run: cat tfplan.json
-       continue-on-error: true
        
      - name: Iac-scan  
-       uses : ZscalerCWP/Zscaler-IaC-Action@v0.3.2
+       uses : ZscalerCWP/Zscaler-IaC-Action@v2.0.0
        id : iac-scan
        with:
           client_id : ${{ secrets.ZSCANNER_CLIENT_GH_ID }}
