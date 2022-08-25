@@ -17,7 +17,7 @@ jobs:
        
        
      - name: Iac-scan  
-       uses : ZscalerCWP/Zscaler-IaC-Action@@main
+       uses : ZscalerCWP/Zscaler-IaC-Action@main
        id : iac-scan
        with:
           client_id : ${{ secrets.ZSCANNER_CLIENT_GH_ID }}
